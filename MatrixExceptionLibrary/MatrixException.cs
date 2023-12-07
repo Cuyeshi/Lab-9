@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace LibraryForMatrix
+namespace MatrixExceptionLibrary
 {
     /// <summary>
     /// Класс с методами исключения.

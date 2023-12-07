@@ -1,5 +1,6 @@
 ﻿using System;
 using LibraryForMatrix;
+using MatrixExceptionLibrary;
 
 
 namespace Matrix

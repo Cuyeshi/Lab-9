@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанные со сборкой.
-[assembly: AssemblyTitle("LibraryOfExceptions")]
+[assembly: AssemblyTitle("MatrixExceptionLibrary")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LibraryOfExceptions")]
+[assembly: AssemblyProduct("MatrixExceptionLibrary")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("d3629f2d-068c-4581-bd2d-b4089100cffa")]
+[assembly: Guid("a6150fd0-9f6e-4322-8336-f3b6a259674f")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //
