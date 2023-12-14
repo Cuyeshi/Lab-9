@@ -5,11 +5,21 @@
     /// </summary>
     public class Matrixs
     {
+        /// <summary>
+        /// Переменная, хранящая количество строк матрицы.
+        /// </summary>
         public int Line;
 
+        /// <summary>
+        /// Переменная, хранящая количество столбцов матрицы.
+        /// </summary>
         public int Column;
 
+        /// <summary>
+        /// Двумерный массив, хранящий элементы матрицы.
+        /// </summary>
         public double[,] Value = new double[1000, 1000];
+        
         /// <summary>
         /// Конструктор пустой матрицы.
         /// </summary>
@@ -19,6 +29,7 @@
             this.Column = 0;
             this.Value[Line, Column] = 0;
         }
+        
         /// <summary>
         /// Конструктор матрицы по вводимым данным.
         /// </summary>
@@ -41,6 +52,7 @@
                 stepLine++;
             }
         }
+        
         /// <summary>
         /// Операция умножения матрицы на матрицу.
         /// </summary>
@@ -76,6 +88,7 @@
             Matrixs D = new Matrixs();
             return D;
         }
+        
         /// <summary>
         /// Операция умножения матрицы на число.
         /// </summary>

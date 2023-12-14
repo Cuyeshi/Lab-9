@@ -2,17 +2,19 @@
 using LibraryForMatrix;
 using MatrixExceptionLibrary;
 
-
-namespace Matrix
+namespace Lab_9
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-
-            Matrixs matrixA = new Matrixs(), matrixB = new Matrixs(), matrixC = new Matrixs(); // Создание переменных типа Matrixs.
+            Matrixs matrixA = new Matrixs();
+            Matrixs matrixB = new Matrixs(); 
+            Matrixs matrixC = new Matrixs();
             int lineA, columnA, lineB, columnB, choice = 0; // Создание переменных для обозначения строчек и столбцов матриц.
-            double[,] valuesA = new double[1000, 1000], valuesB = new double[1000, 1000]; // Создание двумерных массивов для обозначения элементов матриц.
+            // Создание двумерных массивов для обозначения элементов матриц.
+            double[,] valuesA = new double[1000, 1000];
+            double[,] valuesB = new double[1000, 1000];
             bool inputValid = false;
 
             while (!inputValid)
@@ -31,11 +33,13 @@ namespace Matrix
                     Console.Write("\nВведите число столбцов для матрицы B: ");
                     string inputColumnB = Console.ReadLine();
                     MatrixException.ValidateInt(inputColumnB, out columnB);
-                    Console.Write("\nВведите значение для матрицы A(запись по строке): ");
-                    valuesA = Program.InputMatrix(lineA, columnA);
-                    Console.Write("\nВведите значение для матрицы B(запись по строке): ");
-                    valuesB = Program.InputMatrix(lineB, columnB);
-                    matrixA = new Matrixs(lineA, columnA, valuesA); // Метод создания матрицы из полученной информации.
+
+                    Console.Write("\nВведите значение для матрицы A: ");
+                    valuesA = InputMatrix(lineA, columnA);
+                    Console.Write("\nВведите значение для матрицы B: ");
+                    valuesB = InputMatrix(lineB, columnB);
+                    // Метод создания матрицы из полученной информации.
+                    matrixA = new Matrixs(lineA, columnA, valuesA);
                     matrixB = new Matrixs(lineB, columnB, valuesB);
 
                     inputValid = true;
@@ -43,7 +47,7 @@ namespace Matrix
                 catch (MatrixException ex)
                 {
                     Console.Clear();
-                    Console.WriteLine($"Ошибочный ввод (Код {ex.ErrorCode}): {ex.Message}");
+                    Console.WriteLine($"Ошибка ввода: {ex.Message}");
                 }
             }
 
@@ -51,14 +55,15 @@ namespace Matrix
 
             while (isRun) // Консольное меню.
             {
-                Console.WriteLine("\n          Выберите действие:");
-                Console.WriteLine(" ----------------------------------------");
-                Console.WriteLine("|          1 - Вывод Матрицы A;          |");
-                Console.WriteLine("|          2 - Вывод Матрицы B;          |");
-                Console.WriteLine("|     3 - Перемножение Матриц A и B;     |");
-                Console.WriteLine("|     4 - Умножение Матрицы на число;    |");
-                Console.WriteLine("|        0 - Выход из программы;         |");
-                Console.WriteLine(" ----------------------------------------\n");
+                Console.WriteLine("\n╔════════════════════════════════════════╗");
+                Console.WriteLine("║            Выберите действие:          ║");
+                Console.WriteLine("║                                        ║");
+                Console.WriteLine("║          1 - Вывод Матрицы A;          ║");
+                Console.WriteLine("║          2 - Вывод Матрицы B;          ║");
+                Console.WriteLine("║     3 - Перемножение Матриц A и B;     ║");
+                Console.WriteLine("║     4 - Умножение Матрицы на число;    ║");
+                Console.WriteLine("║        0 - Выход из программы;         ║");
+                Console.WriteLine("╚════════════════════════════════════════╝\n");
 
                 bool ValidateChoice = false;
                 while (!ValidateChoice)
@@ -72,28 +77,31 @@ namespace Matrix
                     }
                     catch (MatrixException ex)
                     {
-                        Console.WriteLine($"Ошибочный ввод (Код {ex.ErrorCode}): {ex.Message}");
+                        Console.WriteLine($"Ошибка ввода: {ex.Message}");
                     }
                 }
 
                 switch (choice)
                 {
                     case 1:
+                        // Метод вывода матрицы А.
                         Console.WriteLine("\n");
-                        Program.OutputMatrix(matrixA);  // Метод вывода матрицы А.
+                        OutputMatrix(matrixA);  
                         break;
 
                     case 2:
+                        // Метод вывода матрицы Б.
                         Console.WriteLine("\n");
-                        Program.OutputMatrix(matrixB); // Метод вывода матрицы Б.
+                        OutputMatrix(matrixB); 
                         break;
 
                     case 3:
+                        // Операция умножения матриц.
                         Console.WriteLine("\n");
-                        matrixC = matrixA * matrixB; // Операция умножения матриц.
+                        matrixC = matrixA * matrixB; 
                         if (matrixC.Line != 0)
                         {
-                            Program.OutputMatrix(matrixC);
+                            OutputMatrix(matrixC);
                         }
                         else
                         {
@@ -117,13 +125,13 @@ namespace Matrix
                             }
                             catch (MatrixException ex)
                             {
-                                Console.WriteLine($"Ошибочный ввод (Код {ex.ErrorCode}): {ex.Message}");
+                                Console.WriteLine($"Ошибка ввода: {ex.Message}");
                             }
                         }
 
                         while (input)
                         {
-                            Console.Write("\nВыберите Матрицу(A - 1, B - 2, C - 3, Выход - 0): ");
+                            Console.Write("\nВыберите Матрицу (A - 1, B - 2, C - 3, Выход - 0): ");
 
                             ValidateChoice = false;
                             while (!ValidateChoice)
@@ -137,7 +145,7 @@ namespace Matrix
                                 }
                                 catch (MatrixException ex)
                                 {
-                                    Console.WriteLine($"Ошибочный ввод (Код {ex.ErrorCode}): {ex.Message}");
+                                    Console.WriteLine($"Ошибка ввода: {ex.Message}");
                                 }
                             }
 
@@ -146,21 +154,21 @@ namespace Matrix
                                 case 1:
                                     Console.WriteLine("\n");
                                     matrixA = number * matrixA; // Операция умножения матрицы на число.
-                                    Program.OutputMatrix(matrixA);
+                                    OutputMatrix(matrixA);
                                     input = false;
                                     break;
 
                                 case 2:
                                     Console.WriteLine("\n");
                                     matrixB = number * matrixB;
-                                    Program.OutputMatrix(matrixB);
+                                    OutputMatrix(matrixB);
                                     input = false;
                                     break;
 
                                 case 3:
                                     Console.WriteLine("\n");
                                     matrixC = number * matrixC;
-                                    Program.OutputMatrix(matrixC);
+                                    OutputMatrix(matrixC);
                                     input = false;
                                     break;
 
@@ -186,6 +194,7 @@ namespace Matrix
                 }
             }
         }
+
         /// <summary>
         /// Метод ввода матрицы из консоли.
         /// </summary>
@@ -209,6 +218,7 @@ namespace Matrix
             }
             return value;
         }
+
         /// <summary>
         /// Метод вывода матрицы в консоль.
         /// </summary>

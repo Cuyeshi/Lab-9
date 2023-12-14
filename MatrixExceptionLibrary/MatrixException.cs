@@ -7,11 +7,13 @@ namespace MatrixExceptionLibrary
     /// </summary>
     public class MatrixException : Exception
     {
-        public int ErrorCode { get; }
-
-        public MatrixException(string message, int errorCode) : base(message)
+        /// <summary>
+        /// Конструктор для создания исключений.
+        /// </summary>
+        /// <param name="message"></param>
+        public MatrixException(string message) : base(message)
         {
-            ErrorCode = errorCode;
+           
         }
 
         /// <summary>
@@ -24,12 +26,12 @@ namespace MatrixExceptionLibrary
         {
             if (string.IsNullOrWhiteSpace(input))
             {
-                throw new MatrixException("Строка пуста!", 1);
+                throw new MatrixException("Строка пуста. Ожидалось вещественное число.");
             }
 
             if (!double.TryParse(input, out result))
             {
-                throw new MatrixException("Строка содержит символ или текст!", 2);
+                throw new MatrixException("Строка содержит неподходящее значение. Ожидалось вещественное число.");
             }
         }
 
@@ -43,12 +45,12 @@ namespace MatrixExceptionLibrary
         {
             if (string.IsNullOrWhiteSpace(input))
             {
-                throw new MatrixException("Строка пуста!", 1);
+                throw new MatrixException("Строка пуста. Ожидалось целое число.");
             }
 
             if (!Int32.TryParse(input, out result))
             {
-                throw new MatrixException("Строка содержит вещественное число или текст!", 2);
+                throw new MatrixException("Строка содержит неподходящее значение. Ожидалось целое число.");
             }
         }
 
@@ -62,12 +64,12 @@ namespace MatrixExceptionLibrary
         {
             if (string.IsNullOrWhiteSpace(input))
             {
-                throw new MatrixException("Строка пуста!\n", 1);
+                throw new MatrixException("Строка пуста. Ожидалось целое число.\n");
             }
 
             if (!Int32.TryParse(input, out result))
             {
-                throw new MatrixException("Строка содержит вещественное число или текст!\n", 2);
+                throw new MatrixException("Строка содержит неподходящее значение. Ожидалось целое число.\n");
             }
         }
     }
